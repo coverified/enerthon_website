@@ -18,6 +18,11 @@
     {#if isLoggedIn}
         <div class="intern_map">
             <div class="intern_map--nav">
+                <div>
+                    <a title="Übersicht" href="#" class="active"> Übersicht </a>
+                    <a title="Mein Dashboard" href="#"> Mein Dashboard </a>
+                    <a title="Prognose" href="#"> Prognose </a>
+                </div>
                 <button class="" on:click={() => User.signout()}>
                     Netzbetreiber Mitte
                     <svg role="presentation">
@@ -30,10 +35,6 @@
     {:else}
         <div class="container bg-image">
             <div class="navigation__container">
-                <button> de </button>
-                <button> en </button>
-                <!-- bei Button click pop up öffnen und login button clickbar machen sobald in felder admin@admin steht -->
-                <!-- <button on:click={() => User.signin()}>  Login für Netzbetreiber </button> -->
                 <Login />
             </div>
             <svg role="presentation">
@@ -98,7 +99,9 @@
         </div>
     {/if}
 </main>
-<Footer />
+{#if !isLoggedIn}
+    <Footer />
+{/if}
 
 <style type="text/scss">
     main {
@@ -277,19 +280,31 @@
     }
 
     .intern_map {
-        background-color: #F0F0F0;
-        padding-bottom: 4rem;
+        background-color: #f0f0f0;
 
         &--nav {
             padding: 1.5rem 1.875rem;
             background-color: #161a1c;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
             margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                color: #fff;
+                margin-right: 1.5rem;
+            }
+
+            a.active {
+                box-shadow: inset 0 -0.33em 0 #00ff94;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-bottom: 2.2rem;
+            }
         }
 
         button {
             display: flex;
-            margin-left: auto;
             margin-top: 0;
             margin-bottom: 0;
             background-color: #161a1c;

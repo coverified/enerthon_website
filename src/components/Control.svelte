@@ -20,7 +20,6 @@
 
     /** position: 'topleft' | 'topright' | 'bottomleft' | 'bottomright' */
     export let position;
-    
 
     /** The control instance created by this component */
     export let control = undefined;
@@ -38,21 +37,12 @@
 </script>
 
 <div style="display:hidden">
-    <div class="control__container">
-
-        <div use:createControl class={classNames}>
-            {#if control}
+    <div use:createControl class={classNames}>
+        {#if control}
             <slot {control} />
-            {/if}
-        </div>
+        {/if}
     </div>
 </div>
 
 <style type="text/scss">
-    .control__container {
-        background-color: red;
-        width: 300px;
-        height: 500px;
-        z-index: 1000;
-    }
 </style>

@@ -1,21 +1,5 @@
 [
     {
-        "Name": "Power Plant 1",
-        "Klarname": "Wind001",
-        "Anschlussnetzbetreiber": "Netzbetreiber Mitte",
-        "Anschlussnetzbetreiber MP-ID": "0000000000100",
-        "SR-ID": "CSR1WIND001",
-        "Energieträger": "B19",
-        "Regelzone": "10YDE-ENBW-----N",
-        "Enthaltene TR (TR-ID)": "D1000000011",
-        "MasterNr. TR": "SEE925854856361",
-        "Klarname TR": "WEA1",
-        "TR-ID": "D1000000011",
-        "Nettonennleistung in kW (TRs)": 3450,
-        "lat": 41.335162,
-        "lng": 9.753427
-    },
-    {
         "Name": "Power Plant 2",
         "Klarname": "Wind002",
         "Anschlussnetzbetreiber": "Netzbetreiber Mitte",
@@ -174,22 +158,6 @@
         "Nettonennleistung in kW (TRs)": 3,
         "lat": 47.70819,
         "lng": 7.926348
-    },
-    {
-        "Name": "Power Plant 12",
-        "Klarname": "Bio012",
-        "Anschlussnetzbetreiber": "Netzbetreiber Süd",
-        "Anschlussnetzbetreiber MP-ID": "0000000000102",
-        "SR-ID": "CSR1BIO012",
-        "Energieträger": "B01",
-        "Regelzone": "10YDE-ENBW-----N",
-        "Enthaltene TR (TR-ID)": "D1000000033",
-        "MasterNr. TR": "SEE937278954509",
-        "Klarname TR": "BHKW-1",
-        "TR-ID": "D1000000033",
-        "Nettonennleistung in kW (TRs)": 525,
-        "lat": 52.77034,
-        "lng": 13.144144
     },
     {
         "Name": "Power Plant 13",

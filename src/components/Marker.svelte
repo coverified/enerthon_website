@@ -22,6 +22,8 @@
         });
         marker = L.marker([plant.lat, plant.lng], { icon }).addTo(layerGroup);
 
+        
+
         return {
             destroy() {
                 if (marker) {
@@ -40,3 +42,6 @@
         {/if}
     </div>
 </div>
+
+<style type="text/scss">    
+</style>

@@ -3,7 +3,7 @@
     import L from 'leaflet';
     // Uncomment this for use outside the REPL
     //import 'leaflet/dist/leaflet.css';
-    export let height = '800px';
+    export let height = '100vh';
     export let width = '70%';
 
     // Must set either bounds, or view and zoom.
@@ -26,11 +26,11 @@
     setContext('map', getMap);
 
     function createLeaflet(node) {
-        map = L.map(node).on('zoom', (e) => dispatch('zoom', e));
+        map = L.map(node, {zoomControl: false}).on('zoom', (e) => dispatch('zoom', e));
         if (bounds) {
             map.fitBounds(bounds);
         } else {
-            map.setView(view, zoom);
+            map.setView(view, zoom);            
         }
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -54,7 +54,7 @@
         } else {
             map.setView(view, zoom);
         }
-    }
+    }    
 </script>
 
 <div style="height:{height}; width:{width} margin: 0 auto;" use:createLeaflet>
@@ -66,5 +66,6 @@
 <style>
     :global(.leaflet-control-container) {
         position: static;
+        font: 12px/1.5 "Open Sans", Arial, Helvetica, sans-serif;
     }
 </style>
