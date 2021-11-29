@@ -58,7 +58,7 @@
     .container {
         margin-right: 1.25rem;
     }
-    
+
     .date-time {
         display: flex;
         flex-direction: column;

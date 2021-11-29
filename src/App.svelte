@@ -10,7 +10,7 @@
     let user;
     const unUser = User.subscribe((v) => (user = v));
     onDestroy(unUser);
-    $: isLoggedIn = true;
+    $: isLoggedIn = !!user;
 </script>
 
 <Icons />

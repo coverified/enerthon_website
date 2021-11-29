@@ -7,23 +7,16 @@
     import Polyline from './Polyline.svelte';
     import Time from './Time.svelte';
     import MapToolbar from './MapToolbar.svelte';
-    import { scaleSequential } from 'd3-scale';
-    import { interpolateRainbow } from 'd3-scale-chromatic';
 
     let map;
-    let markerLocations = [];
 
     async function getData() {
         let response = await fetch('/data/data.json');
         let data = await response.json();
-        data.forEach((e) => {
-            markerLocations.push([e.lat, e.lng]);
-        });
-        console.log(markerLocations);
         return data;
     }
 
-    markerLocations = [
+    let markerLocations = [
         [47.952341, 8.515025],
         [47.70819, 7.926348],
         [49.602228, 9.61516],
@@ -85,7 +78,7 @@
     crossorigin=""
 />
 
-<Leaflet bind:map view={initialView} zoom={9}>
+<Leaflet bind:map view={initialView} zoom={8}>
     <Control position="topleft">
         <MapToolbar bind:wind bind:biogas bind:solar bind:power bind:lines={showLines} />
     </Control>
