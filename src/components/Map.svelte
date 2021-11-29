@@ -16,31 +16,51 @@
         return data;
     }
 
-    let markerLocations = [
-        [47.952341, 8.515025],
-        [47.70819, 7.926348],
+    let windMarkerLocations = [
         [49.602228, 9.61516],
-        [48.017241, 8.602017],
-        [48.894, 9.015],
-        [49.698201, 9.787749],
-        [48.195, 10.055],
-        [47.952341, 8.515025],
-        [49.153, 9.693],
         [49.059187, 9.788426],
-        [49.128626, 9.794838],
         [47.70819, 7.926348],
         [48.928871, 10.273493],
-        [48.887, 9.854],
+    ];
+
+    let solarMarkerLocations = [
+        [48.894, 9.015],
+        [49.698201, 9.787749],
+        [49.128626, 9.794838],
+        [47.952341, 8.515025],
         [48.751312, 10.169209],
         [49.46, 8.5],
         [49.446, 8.568],
+    ];
+
+    let biogasMarkerLocations = [
+        [48.195, 10.055],
+        [48.017241, 8.602017],
+        [49.153, 9.693],
+        [48.887, 9.854],
         [49.524198, 8.451864],
     ];
 
     const promise = getData();
 
-    const lines = markerLocations.slice(1).map((latLng, i) => {
-        let prev = markerLocations[i];
+    const windLines = windMarkerLocations.slice(1).map((latLng, i) => {
+        let prev = windMarkerLocations[i];
+        return {
+            latLngs: [prev, latLng],
+            color: '#4FE58B',
+        };
+    });
+
+    const solarLines = solarMarkerLocations.slice(1).map((latLng, i) => {
+        let prev = solarMarkerLocations[i];
+        return {
+            latLngs: [prev, latLng],
+            color: '#4FE58B',
+        };
+    });
+
+    const biogasLines = biogasMarkerLocations.slice(1).map((latLng, i) => {
+        let prev = biogasMarkerLocations[i];
         return {
             latLngs: [prev, latLng],
             color: '#4FE58B',
@@ -53,7 +73,7 @@
     let solar = true;
     let biogas = true;
     let showLines = true;
-    let power = 0;
+    let power = 0;    
 
     $: power;
 
@@ -112,6 +132,13 @@
                                         {plant['Nettonennleistung in kW (TRs)']} kW
                                     </li>
                                 </ul>
+                                <img alt="chart" src="/chart04.svg" loading="lazy" />
+                                <div class="popup-chart--text">
+                                    <p>
+                                        <b>40.400 kW</b>
+                                    </p>
+                                    <span>produziert Energie</span>
+                                </div>
                             </Popup>
                         </Marker>
                     {/if}
@@ -138,6 +165,13 @@
                                         {plant['Nettonennleistung in kW (TRs)']} kW
                                     </li>
                                 </ul>
+                                <img alt="chart" src="/chart01.svg" loading="lazy" />
+                                <div class="popup-chart--text">
+                                    <p>
+                                        <b>100.000 kW</b>
+                                    </p>
+                                    <span>produziert Energie</span>
+                                </div>
                             </Popup>
                         </Marker>
                     {/if}
@@ -164,23 +198,51 @@
                                         {plant['Nettonennleistung in kW (TRs)']} kW
                                     </li>
                                 </ul>
+                                <img alt="chart" src="/chart03.svg" loading="lazy" />
+                                <div class="popup-chart--text">
+                                    <p>
+                                        <b>120.450 kW</b>
+                                    </p>
+                                    <span>produziert Energie</span>
+                                </div>
                             </Popup>
                         </Marker>
                     {/if}
                 {/if}
             {/key}
             {#if showLines}
-                {#each lines as { latLngs, color }}
-                    <Polyline {latLngs} {color} opacity={0.2} />
-                {/each}
+                {#if wind}
+                    {#each windLines as { latLngs, color }}
+                        <Polyline {latLngs} {color} opacity={0.2} />
+                    {/each}
+                {/if}
+                {#if solar}
+                    {#each solarLines as { latLngs, color }}
+                        <Polyline {latLngs} {color} opacity={0.2} />
+                    {/each}
+                {/if}
+                {#if biogas}
+                    {#each biogasLines as { latLngs, color }}
+                        <Polyline {latLngs} {color} opacity={0.2} />
+                    {/each}
+                {/if}
             {/if}
         {/each}
     {/await}
 </Leaflet>
 
 <style type="text/scss">
-    .popup-list {
-        list-style-type: none;
-        padding-left: 0;
+    .popup {
+        &-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        &-chart--text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 2px;
+        }
     }
 </style>

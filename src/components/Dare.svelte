@@ -9,9 +9,9 @@
         if (clouds && count < 2) {
             count++;
             slide = count + '/2';
-        } else if (wind && count < 5) {
+        } else if (wind && count < 4) {
             count++;
-            slide = count + '/5';
+            slide = count + '/4';
         }
     }
 </script>
@@ -58,7 +58,7 @@
                         basicMap = false;
                         clouds = false;
                         count = 1;
-                        slide = '1/5';
+                        slide = '1/4';
                     }}
                 >
                     <svg role="presentation">
@@ -113,25 +113,6 @@
                 </span>
             </h3>
             <p>
-                Der Druck auf die Leitungen steigt an. Die Übertragungsnetzbetreiber müssen jetzt Redispatch anwenden.
-            </p>
-            <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
-        </div>
-    {/if}
-    {#if wind && count === 3}
-        <div class="map__info--box">
-            <h3>
-                <svg role="presentation">
-                    <use xlink:href="#wind-icon" />
-                </svg>
-                Starker Wind
-                <span>
-                    {#if slide}
-                        {slide}
-                    {/if}
-                </span>
-            </h3>
-            <p>
                 Im ersten Schritt, dem sogenannten negativen Redispatch weist die Systemführung konventionelle
                 Kraftwerke und Windkraftanlagen im Norden an, ihre Einspeisung zu reduzieren. Erneuerbare Energien
                 müssen gesetzlich vor allen anderen Erzeugungsarten eingespeist werden.
@@ -139,7 +120,7 @@
             <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
         </div>
     {/if}
-    {#if wind && count === 4}
+    {#if wind && count === 3}
         <div class="map__info--box">
             <h3>
                 <svg role="presentation">
@@ -160,7 +141,7 @@
             <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
         </div>
     {/if}
-    {#if wind && count === 5}
+    {#if wind && count === 4}
         <div class="map__info--box">
             <h3>
                 <svg role="presentation">
@@ -224,33 +205,30 @@
     <div class="map__image">
         {#if basicMap}
             <img src="/map-default.svg" alt="map" />
+            <button>
+                <svg role="presentation">
+                    <use xlink:href="#dare" />
+                </svg>
+            </button>
         {/if}
         {#if wind && count === 1}
-            <img src="/map-wind-01.svg" alt="map" />
+            <img src="/map-wind-01_dare.svg" alt="map" />
         {/if}
         {#if wind && count === 2}
-            <img src="/map-wind-02.svg" alt="map" />
+            <img src="/map-wind-03_dare.svg" alt="map" />
         {/if}
         {#if wind && count === 3}
-            <img src="/map-wind-03.svg" alt="map" />
+            <img src="/map-wind-04_dare.svg" alt="map" />
         {/if}
         {#if wind && count === 4}
-            <img src="/map-wind-04.svg" alt="map" />
-        {/if}
-        {#if wind && count === 5}
-            <img src="/map-wind-05.svg" alt="map" />
+            <img src="/map-wind-05_dare.svg" alt="map" />
         {/if}
         {#if clouds && count === 1}
-            <img src="/map-clouds-01.svg" alt="map" />
+            <img src="/map-clouds-01_dare.svg" alt="map" />
         {/if}
         {#if clouds && count === 2}
-            <img src="/map-clouds-02.svg" alt="map" />
+            <img src="/map-clouds-02_dare.svg" alt="map" />
         {/if}
-        <button>
-            <svg role="presentation">
-                <use xlink:href="#dare" />
-            </svg>
-        </button>
     </div>
 </div>
 
@@ -272,7 +250,6 @@
             h2 {
                 font-size: 1.875rem;
                 line-height: 2.5rem;
-
             }
         }
 
