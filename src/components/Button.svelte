@@ -15,8 +15,13 @@
     :global(.btn) {
         padding: 0.75rem 2.372rem 0.75rem 2.875rem;
         border-radius: 1.5625rem;
-
+        display: inline-block;    
     }
+    
+    :global(.btn + .btn) {
+        margin-top: 1rem;
+    }
+
     :global(.btn--green) {
         background-color: #7cbe82;
         color: #fff;

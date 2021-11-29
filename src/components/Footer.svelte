@@ -12,13 +12,25 @@
     footer {
         background-color: #ebeef0;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
         align-items: center;
         padding-top: 1.25rem;
         padding-bottom: 1.25rem;
 
         img {
+            margin-top: 1rem;
             width: 13.75rem;
+        }
+    }
+
+    @media (min-width: 960px) {
+        footer {
+            flex-direction: row;
+            justify-content: space-around;
+
+            img {
+                margin-top: 0;
+            }
         }
     }
 </style>
