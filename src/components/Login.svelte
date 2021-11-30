@@ -66,4 +66,8 @@
         margin-right: 1rem;
         fill: #ccc;
     }
+
+    @media (min-width: 960px) {
+
+    }
 </style>

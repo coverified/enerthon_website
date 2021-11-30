@@ -10,6 +10,7 @@
     let user;
     const unUser = User.subscribe((v) => (user = v));
     onDestroy(unUser);
+    let showMap = true;
     $: isLoggedIn = !!user;
 </script>
 
@@ -19,18 +20,17 @@
         <div class="intern_map">
             <div class="intern_map--nav">
                 <div>
-                    <a title="Übersicht" href="#" class="active"> Übersicht </a>
-                    <a title="Mein Dashboard" href="#"> Mein Dashboard </a>
-                    <a title="Prognose" href="#"> Prognose </a>
+                    <button on:click={() => (showMap = true)} title="Übersicht" class="{showMap ? 'active' : ''}"> Übersicht </button>
+                    <button on:click={(e) => (showMap = false)} class="{!showMap ? 'active' : ''}" title="Mein Dashboard"> Mein Dashboard </button>
                 </div>
-                <button class="" on:click={() => User.signout()}>
+                <button class="d-flex" on:click={() => User.signout()}>
                     Netzbetreiber Mitte
                     <svg role="presentation">
                         <use xlink:href="#logout" />
                     </svg>
                 </button>
             </div>
-            <Map />
+            <Map bind:showMap />
         </div>
     {:else}
         <div class="container bg-image">
@@ -108,6 +108,7 @@
         position: relative;
         margin: 0 auto;
         overflow: hidden;
+        max-width: 2400px;
     }
 
     .d-none {
@@ -234,19 +235,18 @@
         background-color: #f0f0f0;
 
         &--nav {
-            padding: 1.5rem 1.875rem;
+            padding: 1.5rem 1.875rem 0;
             background-color: #161a1c;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
-            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
 
-            a {
+            button {
                 color: #fff;
                 margin-right: 1.5rem;
             }
 
-            a.active {
+            button.active {
                 box-shadow: inset 0 -0.33em 0 #00ff94;
                 padding-left: 1rem;
                 padding-right: 1rem;
@@ -255,12 +255,16 @@
         }
 
         button {
-            display: flex;
             margin-top: 0;
             margin-bottom: 0;
             background-color: #161a1c;
+            align-self: flex-start;
             border: 0;
             color: #fff;
+        }
+
+        .d-flex {
+            display: flex;
         }
 
         svg {
@@ -273,8 +277,45 @@
     @media (min-width: 540px) {
     }
     @media (min-width: 720px) {
+        .bg-image {
+            svg {
+                margin: 0;
+                display: flex;
+            }
+        }
     }
     @media (min-width: 960px) {
+        .bg-image {
+            svg {
+                width: 25rem;
+                height: 18rem;
+            }
+
+            .text__container {
+                margin-left: auto;
+                max-width: 40%;
+
+                p {
+                    color: #fff;
+                    font-size: 1.25rem;
+                    font-weight: 400;
+                }
+            }
+
+            .arrow__down {
+                font-size: 3.75rem;
+            }
+
+            .navigation__container {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                button {
+                    margin-right: 1.25rem;
+                }
+            }
+        }
     }
     @media (min-width: 1140px) {
     }
@@ -284,25 +325,13 @@
         }
 
         .bg-image {
-            background-image: url('/header-frau.jpg');
-            background-size: cover;
-            height: 1206px;
-            width: 100%;
-            background-repeat: no-repeat;
-
             svg {
                 width: 50rem;
                 height: 32rem;
-                position: absolute;
-                left: 5.9375rem;
-                top: 7.5rem;
             }
 
             .text__container {
                 width: 39.375rem;
-                position: absolute;
-                right: 8.1875rem;
-                top: 41.875rem;
 
                 p {
                     color: #fff;
@@ -313,27 +342,7 @@
             }
 
             .arrow__down {
-                position: absolute;
-                font-size: 8.75rem;
-                display: flex;
-                top: 63.5rem;
-                left: 50%;
-
-                &:before {
-                    content: '\2193';
-                    color: #fff;
-                }
-            }
-
-            .navigation__container {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                padding-top: 1.25rem;
-
-                button {
-                    margin-right: 1.25rem;
-                }
+                font-size: 5.75rem;
             }
         }
 
@@ -428,8 +437,8 @@
             }
         }
 
-        .navigation__container {            
-            padding-top: 1.25rem;            
+        .navigation__container {
+            padding-top: 1.25rem;
         }
     }
 </style>

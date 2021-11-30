@@ -22,10 +22,10 @@
     "svelte-preprocess": "^4.7.4"
   },
   "dependencies": {
-    "d3-scale": "^4.0.2",
-    "d3-scale-chromatic": "^3.0.0",
     "just-flush": "^2.0.1",
     "leaflet": "^1.7.1",
-    "sirv-cli": "^1.0.0"
+    "leaflet.markercluster": "^1.5.3",
+    "sirv-cli": "^1.0.0",
+    "svelte-burger-menu": "^1.0.5"
   }
 }

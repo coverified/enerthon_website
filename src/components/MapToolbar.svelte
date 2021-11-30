@@ -1,11 +1,10 @@
 <script>
     import Control from './Control.svelte';
-    import { createEventDispatcher } from 'svelte';
-    const dispatch = createEventDispatcher();
     export let wind = true;
     export let solar = true;
     export let biogas = true;
     export let power = undefined;
+    export let search = undefined;
 
     let value;
     let input;
@@ -20,26 +19,7 @@
             input.blur();
             power = value;
         }
-    };
-
-    function disableWind() {
-        wind = !wind;
-        dispatch('disable-wind', wind);
-    }
-    function disableSolar() {
-        solar = !solar;
-        dispatch('disable-solar', solar);
-    }
-    function disableBiogas() {
-        biogas = !biogas;
-        dispatch('disable-biogas', biogas);
-    }
-
-    export let lines = true;
-    function clickLines() {
-        lines = !lines;
-        dispatch('click-lines', lines);
-    }
+    };    
 </script>
 
 <div class="leaflet-control--filter">
@@ -52,7 +32,7 @@
         </button>
     </form>
     <label class="control control-checkbox">
-        <input type="checkbox" bind:checked={wind} class:selected={disableWind} />
+        <input type="checkbox" bind:checked={wind} />
         <div class="control_indicator" />
         <svg role="presentation" width="50" height="50">
             <use xlink:href="#windenergie" />
@@ -60,7 +40,7 @@
         <p>Wind</p>
     </label>
     <label class="control control-checkbox">
-        <input type="checkbox" bind:checked={solar} class:selected={disableSolar} />
+        <input type="checkbox" bind:checked={solar} />
         <div class="control_indicator" />
         <svg role="presentation" width="50" height="50">
             <use xlink:href="#solarenergie" />
@@ -68,7 +48,7 @@
         <p>Solar</p>
     </label>
     <label class="control control-checkbox">
-        <input type="checkbox" bind:checked={biogas} class:selected={disableBiogas} />
+        <input type="checkbox" bind:checked={biogas} />
         <div class="control_indicator" />
         <svg role="presentation" width="50" height="50">
             <use xlink:href="#biogas" />
@@ -91,19 +71,6 @@
     </form>
 </div>
 
-<!-- <button type="button" on:click={clickLines} class:selected={lines} title="Show Lines">
-    <svg
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width={lines ? 2 : 1}
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        ><path
-            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-        /></svg
-    >
-</button> -->
 <style type="text/scss">
     .selected {
         background-opacity: 25%;
@@ -156,6 +123,18 @@
                 top: 49px;
             }
         }
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type='number'] {
+        -moz-appearance: textfield;
     }
 
     button {

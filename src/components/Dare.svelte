@@ -1,4 +1,6 @@
 <script>
+    import { fade } from 'svelte/transition';
+
     let wind = false;
     let clouds = false;
     let basicMap = true;
@@ -11,6 +13,15 @@
             slide = count + '/2';
         } else if (wind && count < 4) {
             count++;
+            slide = count + '/4';
+        }
+    }
+    function handleBackBtnClick() {
+        if (clouds && count > 1) {
+            count = count - 1;
+            slide = count + '/2';
+        } else if (wind && count > 1) {
+            count = count - 1;
             slide = count + '/4';
         }
     }
@@ -93,14 +104,17 @@
                 </span>
             </h3>
             <p>
-                Eine Starkwindfront zieht im Norden von Baden-Württemberg auf. Die Windkraftanlagen spesisen nun massiv
+                Eine Starkwindfront zieht im Norden von Baden-Württemberg auf. Die Windkraftanlagen speisen nun massiv
                 Strom ins Netz ein. Es kommt zu kritischen Engpässen im Leitungssystem.
             </p>
-            <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            <div class="btn__container">
+                <button class="btn" on:click={handleBackBtnClick}>&#8592; zurück</button>
+                <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            </div>
         </div>
     {/if}
     {#if wind && count === 2}
-        <div class="map__info--box">
+        <div transition:fade class="map__info--box">
             <h3>
                 <svg role="presentation">
                     <use xlink:href="#wind-icon" />
@@ -117,11 +131,14 @@
                 Kraftwerke und Windkraftanlagen im Norden an, ihre Einspeisung zu reduzieren. Erneuerbare Energien
                 müssen gesetzlich vor allen anderen Erzeugungsarten eingespeist werden.
             </p>
-            <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            <div class="btn__container">
+                <button class="btn" on:click={handleBackBtnClick}>&#8592; zurück</button>
+                <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            </div>
         </div>
     {/if}
     {#if wind && count === 3}
-        <div class="map__info--box">
+        <div transition:fade class="map__info--box">
             <h3>
                 <svg role="presentation">
                     <use xlink:href="#wind-icon" />
@@ -138,11 +155,14 @@
                 zweiten Schritt, dem sogenannten positiven Redispatch, direkt vor Ort im Süden Energie durch
                 Biogasanlagen hinzu.
             </p>
-            <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            <div class="btn__container">
+                <button class="btn" on:click={handleBackBtnClick}>&#8592; zurück</button>
+                <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            </div>
         </div>
     {/if}
     {#if wind && count === 4}
-        <div class="map__info--box">
+        <div transition:fade class="map__info--box">
             <h3>
                 <svg role="presentation">
                     <use xlink:href="#wind-icon" />
@@ -158,11 +178,14 @@
                 Nach diesem zusätzlichen Redispatch sind alle Engpässe schließlich wieder ausgeglichen und das System
                 ist wieder unkritisch.
             </p>
-            <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            <div class="btn__container">
+                <button class="btn" on:click={handleBackBtnClick}>&#8592; zurück</button>
+                <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            </div>
         </div>
     {/if}
     {#if clouds && count === 1}
-        <div class="map__info--box">
+        <div transition:fade class="map__info--box">
             <h3>
                 <svg role="presentation">
                     <use xlink:href="#clouds-icon" />
@@ -178,11 +201,14 @@
                 Ändert sich das Wetter durch zunehmende Bewölkung, wird weniger Solarstrom produziert und der Bedarf im
                 Süden würde nicht mehr gedeckt.
             </p>
-            <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            <div class="btn__container">
+                <button class="btn" on:click={handleBackBtnClick}>&#8592; zurück</button>
+                <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            </div>
         </div>
     {/if}
     {#if clouds && count === 2}
-        <div class="map__info--box">
+        <div transition:fade class="map__info--box">
             <h3>
                 <svg role="presentation">
                     <use xlink:href="#clouds-icon" />
@@ -199,50 +225,53 @@
                 Strom z.B. aus Biogasanlagen zugeschaltet wird. Somit ist das System wieder stabil und der Strom fließt
                 weiterhin ungehindert durch die Netze.
             </p>
-            <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            <div class="btn__container">
+                <button class="btn" on:click={handleBackBtnClick}>&#8592; zurück</button>
+                <button class="btn btn--green" on:click={handleBtnClick}>weiter &#8594;</button>
+            </div>
         </div>
     {/if}
     <div class="map__image">
         {#if basicMap}
-            <img src="/map-default.svg" alt="map" />
-            <button>
-                <svg role="presentation">
-                    <use xlink:href="#dare" />
-                </svg>
-            </button>
+            <div transition:fade>
+                <img src="/map-default.svg" alt="map" />
+                <button>
+                    <svg role="presentation">
+                        <use xlink:href="#dare" />
+                    </svg>
+                </button>
+            </div>
         {/if}
         {#if wind && count === 1}
-            <img src="/map-wind-01_dare.svg" alt="map" />
+            <img transition:fade src="/map-wind-01_dare.svg" alt="map" width="1920" />
         {/if}
         {#if wind && count === 2}
-            <img src="/map-wind-03_dare.svg" alt="map" />
+            <img transition:fade src="/map-wind-03_dare.svg" alt="map" />
         {/if}
         {#if wind && count === 3}
-            <img src="/map-wind-04_dare.svg" alt="map" />
+            <img transition:fade src="/map-wind-04_dare.svg" alt="map" />
         {/if}
         {#if wind && count === 4}
-            <img src="/map-wind-05_dare.svg" alt="map" />
+            <img transition:fade src="/map-wind-05_dare.svg" alt="map" />
         {/if}
         {#if clouds && count === 1}
-            <img src="/map-clouds-01_dare.svg" alt="map" />
+            <img transition:fade src="/map-clouds-01_dare.svg" alt="map" />
         {/if}
         {#if clouds && count === 2}
-            <img src="/map-clouds-02_dare.svg" alt="map" />
+            <img transition:fade src="/map-clouds-02_dare.svg" alt="map" />
         {/if}
     </div>
 </div>
 
 <style type="text/scss">
     .map {
-        display: grid;
-        grid-template-columns: 38rem 82.5rem;
-        grid-template-rows: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         position: relative;
-        // background-color: #EBEEF0;
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem;
 
         &__text {
-            padding-left: 5.625rem;
-            padding-top: 3.75rem;
             margin-bottom: 2.3175rem;
             font-size: 1.25rem;
             line-height: 1.75rem;
@@ -267,8 +296,8 @@
                 }
 
                 svg {
-                    width: 8.4375rem;
-                    height: 8.4375rem;
+                    width: 4.4375rem;
+                    height: 4.4375rem;
                 }
 
                 &.pressed {
@@ -279,10 +308,10 @@
 
         .map__info--box {
             background-color: #636363;
-            height: 23.1875rem;
+            height: 21.1875rem;
             position: relative;
-            grid-column: 1 / 2;
-            grid-row: 2 / 2;
+            display: flex;
+            flex-direction: column;
             color: #fff;
             padding-left: 5.625rem;
             padding-right: 1.625rem;
@@ -316,33 +345,155 @@
             }
 
             button {
-                position: absolute;
-                bottom: 1rem;
             }
         }
 
         &__image {
             img {
+                // width: 1000px;
                 width: 100%;
-                height: auto;
+                // max-width: 100%;
+                // height: 1000px;
                 right: 0;
-                position: absolute;
                 z-index: -1;
             }
 
-            button {
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 10px;
-                background-color: #fff;
-                position: absolute;
-                right: 7rem;
-                top: 23rem;
+            // button {
+            //     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            //     border-radius: 10px;
+            //     background-color: #fff;
+            //     position: absolute;
+            //     right: 7rem;
+            //     top: 23rem;
 
-                svg {
-                    width: 7.4375rem;
-                    height: 7.4375rem;
+            //     svg {
+            //         width: 3.4375rem;
+            //         height: 3.4375rem;
+            //     }
+            // }
+        }
+    }
+
+    @media (min-width: 540px) {
+    }
+    @media (min-width: 720px) {
+    }
+    @media (min-width: 960px) {
+        .map {
+            display: grid;
+            grid-template-columns: 38rem 82.5rem;
+            grid-template-rows: 1fr 1fr;
+            position: relative;
+            padding-right: 0;
+            padding-left: 0;
+
+            &__text {
+                padding-left: 5.625rem;
+                padding-top: 3.75rem;
+                margin-bottom: 2.3175rem;
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+
+                h2 {
+                    font-size: 1.875rem;
+                    line-height: 2.5rem;
+                }
+            }
+
+            &__btns {
+                display: flex;
+                margin-top: 3rem;
+
+                button {
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 10px;
+                    background-color: #fff;
+
+                    + button {
+                        margin-left: 2rem;
+                    }
+
+                    svg {
+                        width: 6.4375rem;
+                        height: 6.4375rem;
+                    }
+
+                    &.pressed {
+                        background-color: #636363;
+                    }
+                }
+            }
+
+            .map__info--box {
+                background-color: #636363;
+                height: 23.1875rem;
+                position: relative;
+                grid-column: 1 / 2;
+                grid-row: 2 / 2;
+                color: #fff;
+                padding-left: 5.625rem;
+                padding-right: 1.625rem;
+                border-top-right-radius: 1.25rem;
+                border-bottom-right-radius: 1.25rem;
+
+                h3 {
+                    color: #bcbcbc;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #f0f0f0;
+                    font-size: 1.25rem;
+
+                    &:before {
+                        position: absolute;
+                        border-bottom: 1px solid #f0f0f0;
+                        width: 100%;
+                    }
+
+                    span {
+                        color: #fff;
+                        margin-left: auto;
+                        margin-right: 1.1875rem;
+                    }
+
+                    svg {
+                        width: 4rem;
+                        height: 4rem;
+                        margin-right: 1.25rem;
+                    }
+                }
+                
+                .btn__container {
+                    margin-top: auto;
+                    margin-bottom: 2rem;
+                }
+                
+            }
+
+            &__image {
+                img {
+                    width: 100%;
+                    height: auto;
+                    right: 0;
+                    position: absolute;
+                    z-index: -1;
+                }
+
+                button {
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 10px;
+                    background-color: #fff;
+                    position: absolute;
+                    right: 7rem;
+                    top: 23rem;
+
+                    svg {
+                        width: 7.4375rem;
+                        height: 7.4375rem;
+                    }
                 }
             }
         }
+    }
+    @media (min-width: 1320px) {
     }
 </style>

@@ -1,12 +1,8 @@
 <script>
     import { createEventDispatcher, setContext } from 'svelte';
     import L from 'leaflet';
-    // Uncomment this for use outside the REPL
-    //import 'leaflet/dist/leaflet.css';
     export let height = '100vh';
     export let width = '70%';
-
-    // Must set either bounds, or view and zoom.
     export let bounds = undefined;
     export let view = undefined;
     export let zoom = undefined;

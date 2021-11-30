@@ -24,11 +24,11 @@
 
     :global(.btn--green) {
         background-color: #7cbe82;
-        color: #fff;
+        color: #fff !important;
     }
 
     :global(.btn--white) {
-        color: #7cbe82;
+        color: #7cbe82 !important;
         background-color: #fff;
     }
 
