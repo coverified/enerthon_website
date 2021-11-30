@@ -284,7 +284,7 @@
         }
 
         .bg-image {
-            background-image: url('/header-frau.png');
+            background-image: url('/header-frau.jpg');
             background-size: cover;
             height: 1206px;
             width: 100%;
