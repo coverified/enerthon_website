@@ -1,5 +1,6 @@
 <script>
     import L from 'leaflet';
+    import "leaflet/dist/leaflet.css";
     import Leaflet from './Leaflet.svelte';
     import Control from './Control.svelte';
     import Marker from './Marker.svelte';
@@ -41,18 +42,10 @@
 
 <svelte:window on:resize={resizeMap} />
 
-<!-- Can just use an import statement for this, when outside the REPL -->
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin=""
-/>
-
 {#if showMap}
     <Leaflet bind:map view={initialView} zoom={8}>
         <Control position="topleft">
-            <MapToolbar bind:wind bind:biogas bind:solar bind:power bind:lines={showLines} />
+            <MapToolbar bind:wind bind:biogas bind:solar bind:power />
         </Control>
         <Control position="topright">
             <Time />

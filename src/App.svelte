@@ -82,7 +82,7 @@
         <div class="info__boxes">
             <div class="info__boxes--green">
                 <h2>Ihre Vorteile als Netzbetreibende</h2>
-                <p>Dare ist bundesweit einsetzbar für alle Netzbetreiber!</p>
+                <p>DA/RE ist bundesweit einsetzbar für alle Netzbetreiber!</p>
                 <Button label="Vorteile kennen lernen" href="#" style="btn btn--white" />
             </div>
             <div class="info__boxes--white">

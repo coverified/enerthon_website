@@ -152,7 +152,7 @@
                 </span>
             </h3>
             <p>
-                Die Folge: der Strombedarf im Süden wird nicht mehr gedeckt. Deshalb schaletet die Systemführung im
+                Die Folge: der Strombedarf im Süden wird nicht mehr gedeckt. Deshalb schaltet die Systemführung im
                 zweiten Schritt, dem sogenannten positiven Redispatch, direkt vor Ort im Süden Energie durch
                 Biogasanlagen hinzu.
             </p>
@@ -222,7 +222,7 @@
                 </span>
             </h3>
             <p>
-                Durch einen regen Stromhandel wird dieses Defizit schnell ausgeglichen, indem automatisch preisgünstiger
+                Durch Redispatch-Maßnahmen wird dieses Defizit schnell ausgeglichen, indem automatisch preisgünstiger
                 Strom z.B. aus Biogasanlagen zugeschaltet wird. Somit ist das System wieder stabil und der Strom fließt
                 weiterhin ungehindert durch die Netze.
             </p>
