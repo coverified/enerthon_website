@@ -108,7 +108,7 @@
         position: relative;
         margin: 0 auto;
         overflow: hidden;
-        max-width: 2400px;
+        max-width: 2100px;
     }
 
     .d-none {

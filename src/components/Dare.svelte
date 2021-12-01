@@ -1,5 +1,6 @@
 <script>
     import { fade } from 'svelte/transition';
+    import Modal, { getModal } from './Modal.svelte';
 
     let wind = false;
     let clouds = false;
@@ -235,11 +236,6 @@
         {#if basicMap}
             <div transition:fade>
                 <img src="/map-default.svg" alt="map" />
-                <button>
-                    <svg role="presentation">
-                        <use xlink:href="#dare" />
-                    </svg>
-                </button>
             </div>
         {/if}
         {#if wind && count === 1}
@@ -261,7 +257,25 @@
             <img transition:fade src="/map-clouds-02_dare.svg" alt="map" />
         {/if}
     </div>
+    <div class="video__container">
+        <p><b>Jetzt spielen!</b> Kannst du<br /> einen BlackOut verhindern?</p>
+        <button on:click={() => getModal('video').open()} class="btn btn--youtube">
+            <svg role="presentation">
+                <use xlink:href="#blackout" />
+            </svg>
+        </button>
+    </div>
 </div>
+<Modal id="video">
+    <video
+        class=""
+        src="enerthon_game_demo.mp4"
+        preload=”none”
+        autoplay
+        controls
+        playsinline
+    />
+</Modal>
 
 <style type="text/scss">
     .map {
@@ -343,34 +357,40 @@
                     margin-right: 1.25rem;
                 }
             }
-
-            button {
-            }
         }
 
         &__image {
             img {
-                // width: 1000px;
                 width: 100%;
-                // max-width: 100%;
-                // height: 1000px;
                 right: 0;
                 z-index: -1;
             }
+        }
+    }
 
-            // button {
-            //     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            //     border-radius: 10px;
-            //     background-color: #fff;
-            //     position: absolute;
-            //     right: 7rem;
-            //     top: 23rem;
+    .video__container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 200px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #ffffff;
+        opacity: 0.8;
+        border-top-left-radius: 29.5px;
+        border-bottom-left-radius: 29.5px;
+        padding: 1.875rem 1rem 1.875rem 2.5rem;
 
-            //     svg {
-            //         width: 3.4375rem;
-            //         height: 3.4375rem;
-            //     }
-            // }
+        .btn--youtube {
+            border: 0;
+            padding: 0;
+            background: transparent;
+
+            svg {
+                width: 16rem;
+                height: 3rem;
+            }
         }
     }
 
@@ -386,6 +406,7 @@
             position: relative;
             padding-right: 0;
             padding-left: 0;
+            margin-bottom: 5rem;
 
             &__text {
                 padding-left: 5.625rem;
@@ -461,12 +482,11 @@
                         margin-right: 1.25rem;
                     }
                 }
-                
+
                 .btn__container {
                     margin-top: auto;
                     margin-bottom: 2rem;
                 }
-                
             }
 
             &__image {
@@ -494,6 +514,14 @@
             }
         }
     }
-    @media (min-width: 1320px) {
+
+    @media (min-width: 1900px) {
+        .map {
+            margin-bottom: 10rem;
+        }
+
+        .video__container {
+            bottom: -7rem;
+        }
     }
 </style>

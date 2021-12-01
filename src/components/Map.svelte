@@ -84,7 +84,7 @@
                                             <b>{plant['Nettonennleistung in kW (TRs)']} kW</b>
                                         </li>
                                     </ul>
-                                    <img alt="chart" src="/chart04.svg" loading="lazy" />
+                                    <img alt="chart" src="/chart02.svg" loading="lazy" />
                                     <div class="popup-chart--text">
                                         <p>
                                             <b>40.400 kW</b>

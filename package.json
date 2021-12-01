@@ -25,7 +25,6 @@
     "just-flush": "^2.0.1",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.5.3",
-    "sirv-cli": "^1.0.0",
-    "svelte-burger-menu": "^1.0.5"
+    "sirv-cli": "^1.0.0"
   }
 }
