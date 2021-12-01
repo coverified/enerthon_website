@@ -4,7 +4,6 @@
     export let solar = true;
     export let biogas = true;
     export let power = undefined;
-    export let search = undefined;
 
     let value;
     let input;
@@ -19,18 +18,10 @@
             input.blur();
             power = value;
         }
-    };    
+    };
 </script>
 
 <div class="leaflet-control--filter">
-    <form class="form__search">
-        <input type="text" class="text-field" />
-        <button type="submit" class="btn btn-search" title="Suchen">
-            <svg role="presentation">
-                <use xlink:href="#search" />
-            </svg>
-        </button>
-    </form>
     <label class="control control-checkbox">
         <input type="checkbox" bind:checked={wind} />
         <div class="control_indicator" />

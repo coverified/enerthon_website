@@ -1,12 +1,10 @@
 <script>
     import L from 'leaflet';
     import { getContext, setContext } from 'svelte';
-
     let classNames = undefined;
     export { classNames as class };
 
     export let marker = undefined;
-
     export let width = 30;
     export let height = 30;
     export let plant;
@@ -21,8 +19,6 @@
             iconSize: L.point(width, height),
         });
         marker = L.marker([plant.lat, plant.lng], { icon }).addTo(layerGroup);
-
-        
 
         return {
             destroy() {
@@ -42,6 +38,3 @@
         {/if}
     </div>
 </div>
-
-<style type="text/scss">    
-</style>

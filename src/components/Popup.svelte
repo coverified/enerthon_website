@@ -12,13 +12,11 @@
         popup = L.popup({keepInView:true, autoClose:false}).setContent(popupElement);
         layer.bindPopup(popup);
         layer.on('popupopen', () => {
-            // layer._icon.classList.add('activeMarker');
             popupOpen = true;
             showContents = true;
         });
         layer.on('popupclose', () => {
             popupOpen = false;
-            // layer._icon.classList.remove('activeMarker');
             // Wait for the popup to completely fade out before destroying it.
             // Otherwise the fade out looks weird as the contents disappear too early.
             setTimeout(() => {
@@ -57,27 +55,4 @@
         outline-offset: 5px;
         border-radius: 10rem;
     }
-
-    // :global(.leaflet-popup) {
-    //     top: 55px !important;
-    //     left: 250px !important;
-    //     position: absolute;
-    // }
-    // /* I moved the "tip" to the right location, but don't succeed in making it visible. */
-    // :global(.leaflet-popup-tip-container) {
-    //     top: 0px !important;
-    //     overflow: auto !important;
-    // }
-    // :global(.leaflet-popup-tip) {
-    //     box-shadow: none !important;
-    //     background-clip: none !important;
-    // }
-    // :global(.leaflet-popup:before) {
-    //     content: none;
-    //     // position: absolute;
-    //     border: 13px solid transparent;
-    //     border-bottom-color: white;
-    //     bottom: 0px;
-    //     margin-left: -13px;
-    // }
 </style>

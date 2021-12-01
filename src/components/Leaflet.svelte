@@ -34,6 +34,7 @@
             &copy;<a href="https://carto.com/attributions" target="_blank">CARTO</a>`,
             subdomains: 'abcd',
             maxZoom: 14,
+            minZoom: 7,
         }).addTo(map);
 
         return {

@@ -1,6 +1,6 @@
 <script>
     import L from 'leaflet';
-    import "leaflet/dist/leaflet.css";
+    import 'leaflet/dist/leaflet.css';
     import Leaflet from './Leaflet.svelte';
     import Control from './Control.svelte';
     import Marker from './Marker.svelte';
@@ -23,8 +23,8 @@
 
     let wind = true;
     let solar = true;
+    let marker;
     let biogas = true;
-    let showLines = true;
     let power = 0;
 
     $: power;
