@@ -11,8 +11,7 @@
     const unUser = User.subscribe((v) => (user = v));
     onDestroy(unUser);
     let showMap = true;
-    // $: isLoggedIn = !!user;
-    $: isLoggedIn = true;
+    $: isLoggedIn = !!user;
 </script>
 
 <Icons />
